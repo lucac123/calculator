@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MiniCalc</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="./calc.css"/>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet"> 
+	</head>
+	<body>
+		<div id="calculator">
+			<div id="terms">
+				<input class="text_box term" type="text" name="term1" value="0"/>
+				<input class="text_box term" type="text" name="term2" value="0"/>
+			</div>
+			<div id="buttons">
+				<input class="button" type="radio" name="operator" value="plus"/>
+				<input class="button" type="radio" name="operator" value="minus"/>
+				<input class="button" type="radio" name="operator" value="times"/>
+				<input class="button" type="radio" name="operator" value="divides"/>
+			</div>
+			<div id="answer">
+				<p class="text_box" id="answer">0</p>
+			</div>
+		</div>
+	</body>
+	<script>
+		
+		let calculate = (event) => {
+			let operator = null;
+
+			let t1 = parseFloat(terms[0].value);
+			let t2 = parseFloat(terms[1].value);
+			let sol = document.getElementById("answer");
+
+			for (let i = 0; i < buttons.length; i++)
+				if (buttons[i].checked) operator = buttons[i].value;
+			
+			switch(operator) {
+				case "plus":
+					sol.textContent = (isNaN(t1)? 0 : t1) + (isNaN(t2)? 0 : t2);
+					break;
+				case "minus":
+					sol.textContent = (isNaN(t1)? 0 : t1) - (isNaN(t2)? 0 : t2);
+					break;
+				case "times":
+					sol.textContent = (isNaN(t1)? 0 : t1) * (isNaN(t2)? 0 : t2);
+					break;
+				case "divides":
+					if (t2 == 0)
+						sol.textContent = "ERR DIVIDE BY 0"
+					else
+						sol.textContent = (isNaN(t1)? 0 : t1) / (isNaN(t2)? 1 : t2);
+					break;
+				default:
+					sol.textContent = 0;
+			}
+
+			
+		}
+		
+		let terms = document.getElementsByClassName("term");
+		let buttons = document.getElementsByName("operator");
+
+		for (let i = 0; i < terms.length; i++)
+			terms[i].addEventListener("input", calculate, false);
+
+		for (let i = 0; i < buttons.length; i++)
+			buttons[i].addEventListener("change", calculate, false);
+
+	</script>
+</html>
