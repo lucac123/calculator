@@ -53,6 +53,7 @@ input[type="radio"] {
 
 .button {
 	display: inline-block;
+	cursor: pointer;
 	margin-bottom: 15px;
 	height: 140px;
 	width: 140px;
