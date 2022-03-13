@@ -11,8 +11,8 @@
 	<body>
 		<div id="calculator">
 			<div id="contents">
-				<input class="text-box term" type="text" name="term1" value="0"/>
-				<input class="text-box term" type="text" name="term2" value="0"/>
+				<input class="text-box term" type="text" name="term1" placeholder="0"/>
+				<input class="text-box term" type="text" name="term2" placeholder="0"/>
 
 				<label class="button">
 					<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -90,8 +90,9 @@
 		let terms = document.getElementsByClassName("term");
 		let buttons = document.getElementsByName("operator");
 
-		for (let i = 0; i < terms.length; i++)
+		for (let i = 0; i < terms.length; i++) {
 			terms[i].addEventListener("input", calculate, false);
+		}
 
 		for (let i = 0; i < buttons.length; i++)
 			buttons[i].addEventListener("change", calculate, false);

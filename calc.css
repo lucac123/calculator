@@ -44,6 +44,16 @@ body {
 	color: #A7DDFB;
 	font-family: 'Cabin', sans-serif;
 	font-size: 30pt;
+	outline: none;
+}
+
+.term::placeholder {
+	color: #A7DDFB;
+	opacity: 1;
+}
+
+.term:focus::placeholder {
+	color: transparent;
 }
 
 input[type="radio"] {
